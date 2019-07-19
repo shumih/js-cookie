@@ -40,7 +40,7 @@
 		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
 	}
 
-	function init (converter) {
+	function init (converter, document) {
 		function api() {}
 
 		function set (key, value, attributes) {
@@ -139,6 +139,9 @@
 			return key ? jar[key] : jar;
 		}
 
+		api.setString = function (str) {
+			document.cookie = str;
+		}
 		api.set = set;
 		api.get = function (key) {
 			return get(key, false /* read as raw */);
@@ -155,9 +158,10 @@
 		api.defaults = {};
 
 		api.withConverter = init;
+		api.withGlobal = init
 
 		return api;
 	}
 
-	return init(function () {});
+	return init(function () {}, typeof document === 'undefined' ? { cookie: '' } : document);
 }));
