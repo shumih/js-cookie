@@ -25,6 +25,7 @@
   },
   "files": [
     "src/**/*.js",
+    "src/**/*.d.ts",
     "SERVER_SIDE.md",
     "CONTRIBUTING.md"
   ],
