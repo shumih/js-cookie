@@ -42,7 +42,7 @@
 
   function init(converter, doc) {
     if (!doc) {
-      doc = typeof doc === "undefined" ? {} : document;
+      doc = typeof document === "undefined" ? {} : document;
     }
 
     function api() {}
