@@ -178,11 +178,11 @@
     api.withConverter = init;
     api.withGlobal = init;
     api.withDoc = function(doc) {
-      return init(null, doc);
+      return init(function() {}, doc);
     };
 
     return api;
   }
 
-  return init(function() {});
+  return init(function() {}, { cookie: "" });
 });
